@@ -49,7 +49,7 @@ namespace ak {
         return false;
     }
 
-    // 是否为islnk
+    // 是否为SymLnk
     bool FileUtil::isSymLink(const char *szDirPath)
     {
         struct stat stats;
@@ -57,5 +57,22 @@ namespace ak {
             return true;
         return false; 
     }
+
+    bool FileUtil::resolveRelativePath(std::string & path, const std::string & base) {
+
+#ifndef __WIN32__
+        if (path.empty() || path[0] != '/') {
+            // path is relative.
+            string::size_type last_slash = base.rfind('/');
+            if (last_slash != string::npos) {
+                path.insert(0, base, 0, last_slash + 1);
+            }
+        }
+#else
+#error "WINDOWS is NOT supported"
+#endif
+    }
+
+
 }
 

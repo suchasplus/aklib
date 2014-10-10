@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <string>
+#include <cstring>
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <errno.h>
@@ -18,12 +20,15 @@ namespace ak {
     */
     class FileUtil {
         public:
-            /** 创建多级目录 */
+            // 创建多级目录
             static bool mkdirs(char *szDirPath);
-            /** 是否为目录 */
+            // 是否为目录 
             static bool isDirectory(const char *szDirPath);
-            /** 是否为SymLink文件 */
+            // 是否为SymLink文件
             static bool isSymLink(const char *szDirPath);
+            // 解决相对路径
+            static bool resolveRelativePath(std::string & path, const std::string & base);
+
     };
 }
 
