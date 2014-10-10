@@ -69,7 +69,7 @@ namespace ak {
             }
         }
 #else
-#error "WINDOWS is NOT supported"
+#error "WINDOWS is NOT supported, see also http://xapian.org/docs/sourcedoc/html/fileutils_8cc_source.html"
 #endif
     }
 
