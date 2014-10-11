@@ -69,6 +69,7 @@ namespace ak {
             // 计算相同的prefix长度
             static std::string::size_type samePrefixLength(const std::string &a, const std::string &b);
 
+
     };   
 }
 
