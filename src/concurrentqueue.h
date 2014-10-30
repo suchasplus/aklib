@@ -8,6 +8,8 @@
  * Using std::unique_lock instead of boost::mutex::scoped_lock
  * refer: http://stackoverflow.com/questions/22676871/boost-scoped-lock-replacement-in-c11
  *
+ * @author suchasplus@gmail.com
+ *
  */
 
 #include <queue>
@@ -21,11 +23,11 @@ template<typename Data>
 class ConcurrentQueue
 {  
 private:  
-    std::queue<Data> _msg_queue ;
-    mutable std::mutex _mutex ;
+    std::queue<Data>        _msg_queue ;
+    mutable std::mutex      _mutex ;
     std::condition_variable _condition_variable ; // Message current queue.
-    bool _is_running ;
-    uint32_t _max_queue_size ;
+    bool                    _is_running ;
+    uint32_t                _max_queue_size ;
 public:
     ~ConcurrentQueue() {
     }
@@ -39,11 +41,11 @@ public:
     int push(Data const& data)  
     {  
         std::unique_lock<std::mutex> lock(_mutex) ;  
+        // Out of range max queue size.
         if (_msg_queue.size() >= _max_queue_size) {
-            return -1;
+            return -1 ;
         }
         _msg_queue.push(data) ;
-        // Out of range max queue size.
         lock.unlock() ;
         _condition_variable.notify_one() ;  
         return 0 ;
@@ -60,12 +62,12 @@ public:
         std::unique_lock<std::mutex> lock(_mutex) ;
         if(_msg_queue.empty())  
         {  
-            return false;  
+            return false ;  
         }  
 
-        popped_value = _msg_queue.front();  
-        _msg_queue.pop();  
-        return true;  
+        popped_value = _msg_queue.front() ; 
+        _msg_queue.pop() ; 
+        return true ;
     }
 
     void wait_and_pop(Data& popped_value)  
@@ -91,8 +93,8 @@ public:
     }
 
     void stop() {
-        _is_running = false;
-        _condition_variable.notify_all();
+        _is_running = false ;
+        _condition_variable.notify_all() ;
     }
 };
 
