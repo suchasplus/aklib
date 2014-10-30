@@ -49,13 +49,5 @@ enum _ret_t {
 };
 typedef enum _ret_t ret_t;
 
-namespace ak {
-
-class StringUtil;
-class FileUtil;
-class IniUtil;
-class KVConfUtil;
-
-}
 
 #endif //end AK_H
