@@ -44,7 +44,9 @@ namespace ak {
             // urldecode
             static char *urlDecode(const char *src, char *dest);
 
+            // murMurHash
             static unsigned int murMurHash(const void *key, int len);
+
             // 把bytes转成可读的, 如 10K 12M 等
             static std::string formatByteSize(double bytes);
             
