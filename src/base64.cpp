@@ -193,15 +193,17 @@ const char Base64::_decode_table[] = {
 
 int main(int argc, const char *argv[])
 {
-    std::string strRaw("Test 测试 string /+=!@#$%^&*()-");
+    std::string strRaw("Test 测试 \tstring /+=!@#$%^&*()-");
     strRaw.append(strRaw);
     strRaw.append(strRaw);
-    strRaw.append(strRaw);
-    strRaw.append(strRaw);
-    strRaw.append(strRaw);
-    strRaw.append(strRaw);
-    strRaw.append(strRaw);
-    std::cout << ak::Base64::encode(strRaw) << std::endl;
+
+    std::string strEncoded = ak::Base64::encode(strRaw) ;
+    std::cout << "encoded:\n" << strEncoded << std::endl ;
+
+    std::string strDecoded = ak::Base64::decode(strEncoded) ;
+
+    std::cout << "raw:\n" << strDecoded << std::endl ;
+
     return 0;
 }
 

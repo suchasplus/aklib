@@ -18,6 +18,8 @@ namespace ak {
             static std::string getLocalIP(const std::string& local_eth) ;
 
             static uint64_t ip2long(const std::string& ip_str) ;
+
+            static std::string long2ip(const uint64_t ipulong) ;
     };
 }
 #endif  // END of AK_IPUTIL_H
