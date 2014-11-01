@@ -1,4 +1,4 @@
-#include <sharelib/util/base64.h>
+#include <base64.h>
 #include <string>
 
 namespace ak {
@@ -185,3 +185,25 @@ const char Base64::_decode_table[] = {
 };
 
 };
+
+
+#ifdef AK_BASE64_MAIN
+
+//g++ -o test_base64 -I./ -DAK_BASE64_MAIN  base64.cpp
+
+int main(int argc, const char *argv[])
+{
+    std::string strRaw("Test 测试 string /+=!@#$%^&*()-");
+    strRaw.append(strRaw);
+    strRaw.append(strRaw);
+    strRaw.append(strRaw);
+    strRaw.append(strRaw);
+    strRaw.append(strRaw);
+    strRaw.append(strRaw);
+    strRaw.append(strRaw);
+    std::cout << ak::Base64::encode(strRaw) << std::endl;
+    return 0;
+}
+
+
+#endif
