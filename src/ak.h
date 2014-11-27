@@ -49,5 +49,23 @@ enum _ret_t {
 };
 typedef enum _ret_t ret_t;
 
+const char *day_short_names[] = {
+    "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+};
+
+const char *day_full_names[] = {
+    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+} ;
+
+const char *mon_short_names[] = {
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+} ;
+
+const char *mon_full_names[] = {
+    "January", "February", "March", "April",
+    "May", "June", "July", "August",
+    "September", "October", "November", "December"
+} ;
+
 
 #endif //end AK_H

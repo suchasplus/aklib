@@ -92,6 +92,17 @@ public:
         return _msg_queue.size() ;
     }
 
+    int capacity() const {
+        std::unique_lock<std::mutex> lock(_mutex) ;
+        return _max_queue_size ;
+    }
+
+    void setCapacity(uint32_t max_queue_size) {
+        std::unique_lock<std::mutex> lock(_mutex) ;
+        _max_queue_size = max_queue_size;
+        return _max_queue_size ;
+    }
+
     void stop() {
         _is_running = false ;
         _condition_variable.notify_all() ;
