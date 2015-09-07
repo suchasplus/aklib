@@ -67,5 +67,8 @@ const char *mon_full_names[] = {
     "September", "October", "November", "December"
 } ;
 
+#define NS_AKLIB_BEGIN namespace ak {
+#define NS_AKLIB_END }
+
 
 #endif //end AK_H
